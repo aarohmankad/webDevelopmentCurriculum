@@ -1,8 +1,11 @@
+# Moving Player Canvas 
+
 Now it's time to move our players. Let start by tracking the current position of our player.
 
 1.  In the Player.js file in the js folder, add a prevX and prevY to the 
     update function, so we can tell if they player has moved since the last frame.
 
+```javascript
 /**
  * updates position on player based on key presses
  * @param  keys {Object} access what keys were pressed
@@ -31,11 +34,11 @@ this.update = function(keys) {
   // return true if player has moved
   return (prevX != x || prevY != y) ? true : false;
 };
+```
 
-2. Now that we know if the player moves, let's only move the player on the screen
-   if they player moves with the key press. Add the following code to the update function
-   of game.js
+2. Now that we know if the player moves, let's only move the player on the screen if the player moves with the key press. Add the following code to the update function of game.js:
 
+```javascript
 /**
  * updates player based on state of keys pressed
  */
@@ -47,10 +50,11 @@ function update() {
     });
   }
 }
+```
 
-3. Now we only update the player when the player moves. Since we can get data when the
-   player moves, we can add this code to the onMovePlayer function in game.js
+3. Now we only update the player when the player moves. Since we can get data when the player moves, we can add this code to the onMovePlayer function in game.js
 
+```javascript
 /**
  * called when any player moves
  * @param data {Object} data on the player that moved
@@ -68,10 +72,11 @@ function onMovePlayer(data) {
   movePlayer.setX(data.x);
   movePlayer.setY(data.y);
 }
+```
 
-4. This code updates remote players when they move. To also track this on the server, add
-   the following code to the onMovePlayer function in Server.js
+4. This code updates remote players when they move. To also track this on the server, add the following code to the onMovePlayer function in Server.js
 
+```javascript
 /**
  * called when player moves
  * @param data {Object} data on player movement
@@ -92,6 +97,6 @@ function onMovePlayer (data) {
     y: movePlayer.getY(),
   });
 }
+```
 
-5. We're done! Run `node server.js` in Git Bash and open multiple index.html files. 
-   Try moving the players in both browsers. They should now be in sync.
+5. We're done! Run `node server.js` in Git Bash and open multiple index.html files. Try moving the players in both browsers. They should now be in sync.
