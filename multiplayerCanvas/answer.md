@@ -1,9 +1,12 @@
+# Challenge Activity Answer
+
 Couldn't get it huh? Or maybe you did and you want to see
 if you got it right. Well here's how:
 
 To remove the players, we need to able to get a player based
 on a unique attribute (the id). So in server.js, add this function
 
+```javascript
   /**
    * return player based on unique id
    * @param id {String} unique id for a player object
@@ -18,10 +21,12 @@ on a unique attribute (the id). So in server.js, add this function
 
     return null;
   }
+```
 
 We want to remove a player when the player disconnects, or 
 closes the browser. To do this, add this code to onClientDisconnect
 
+```javascript
   var removePlayer = findPlayerById(this.id);
 
   if (!removePlayer) {
@@ -37,10 +42,12 @@ closes the browser. To do this, add this code to onClientDisconnect
   this.broadcast.emit('remove player', {
     id: this.id,
   });
+```
 
 We also want to add the findPlayerById function in our game.js file.
 Note that the code is a little different.
 
+```javascript
   /**
    * return player based on unique id
    * @param id {String} unique id for a player object
@@ -55,10 +62,12 @@ Note that the code is a little different.
 
     return null;
   }
+```
 
 Now when our server sends the "remove player" event, we want to remove 
 that player from our game. To do that, add this code to the onRemovePlayer function
 
+```javascript
   var removePlayer = findPlayerById(data.id);
 
   if (!removePlayer) {
@@ -68,9 +77,12 @@ that player from our game. To do that, add this code to the onRemovePlayer funct
 
   // Again, just a fancy way to remove a player
   remotePlayers.splice(remotePlayers.indexOf(removePlayer), 1);
+```
 
 Restart the server (Ctrl+C to close it if it's already running, then `node server.js`)
+
 Open the game in the browser and you should only see one box when you refresh the page.
+
 When you open the file in a different window, you should see two boxes (simulating two players)
 
 Yay you're done with this tutorial!
