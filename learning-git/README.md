@@ -1,4 +1,4 @@
-#Learning Git
+# Learning Git
 
 1. Create an account on [Github](http://www.github.com).
 
