@@ -1,0 +1,8 @@
+// A package.json file is used to outline dependencies for a project. 
+// In our case, we need express, which makes creating our server much easier
+// When you run `npm install` in Git Bash, the dependencies are installed
+{
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
