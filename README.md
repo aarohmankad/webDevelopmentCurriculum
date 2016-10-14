@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/aarohmankad/webDevelopmentCurriculum.png?label=ready&title=Ready)](https://waffle.io/aarohmankad/webDevelopmentCurriculum)
 ## Web Development for Intermediate Programmers;
 
 This course is for students in high school or college with at least AP CS experience or some CS101 experience. However, I encourage you to try the course even if you don't meet those suggested requirements!
