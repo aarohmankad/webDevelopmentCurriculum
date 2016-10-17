@@ -18,7 +18,7 @@ Without further ado, here is the recommended course structure:
 
 Project | What you're learning | What you make
 ------------ | ------------- | -------------
-Learning Git | Git, Source Control | You will be creating a Github account that will allow you to share your code online and save it so you can work on it anywhere you go.
+[Learning Git](learning-git/) | Git, Source Control | You will be creating a Github account that will allow you to share your code online and save it so you can work on it anywhere you go.
 Using Weather API | HTML, Javascript | This project will be your first introduction to a web project. Stick with it and you'll build your own Weather App!
 Using Flickr API | HTML, Javascript | This should feel familiar to the Weather project, but we'll use a different API and I'll hold your hand a little less.
 File Server | Node.js, Express | Now that we're familiar with how to create a web app, we're going to work with Node.js, which will let us create our own servers and databases. But for now, we're just going to have it return a file when we ask for it.
