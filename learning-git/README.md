@@ -7,35 +7,49 @@
 3. Download [Git](http://www.git-scm.com)
 
 4. Open Git Bash.  Navigate to your Github folder in My Documents.
-    
->    cd (folderName)   
->    cd ..
 
-4. Start by cloning your repository.
+    ```
+    cd (folderName)   
+    cd ..
+    ```
+
+5. Start by cloning your repository.
     
->    git clone (githubCloneUrl)
+    ```
+    git clone (githubCloneUrl)
+    ```
 
 6. Let's edit the README. First, create an issue on Github.
 
 7. Checkout a branch called update-readme
     
->    git checkout -b issueNumber/update-readme
+    ```
+    git checkout -b issueNumber/update-readme
+    ```
 
 8. Write something in the README. For example:
     
->    This is my first change using github!
+    ```
+    This is my first change using github!
+    ```
 
 9. Now lets go back to the git bash and add our changes
     
->    git add -A
+    ```
+    git add -A
+    ```
 
 10. Now commit them to your branch, and add a message describing what you did.
     
->    git commit -m "Update README"
+    ```
+    git commit -m "Update README"
+    ```
 
 11. Now push them to your branch
     
->    git push origin head
+    ```
+    git push origin head
+    ```
 
 12. Now on github, you have Pull Requests. Create a Pull Request for your issue.
 
@@ -45,11 +59,15 @@
 
 15. In the Git Bash, go back to the master branch
     
->    git checkout master
+    ```
+    git checkout master
+    ```
 
 16. Pull your new changes into the master branch
     
->    git pull
+    ```
+    git pull
+    ```
 
 **Congrats! You've just completed your first Git PR!**
 

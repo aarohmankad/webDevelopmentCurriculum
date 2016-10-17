@@ -1,9 +1,8 @@
 # Querying Mongoose
 
-In this tutorial, we're going to be using MongoDB and
-Mongoose to create a database for our node applications.
+In this tutorial, we're going to be using MongoDB and Mongoose to create a database for our node applications.
 
-1. Download MongoDB from https://www.mongodb.org/
+1. Download [MongoDB](https://www.mongodb.org/).
 
 2. Open a Git Bash anywhere and run `mongod`. Do not
 close this window throughout the process of this tutorial.
@@ -13,13 +12,13 @@ databases for use.
 3. Let's create our package.json and outline the 
 dependencies we need.
 
-```javascript
-  {
-    "dependencies": {
-      "mongoose": "^4.1.10"
+    ```javascript
+    {
+      "dependencies": {
+        "mongoose": "^4.1.10"
+      }
     }
-  }
-```
+    ```
 
 3.5. Open Git Bash in your project folder and run the
 command `npm install`. This command installs any dependencies
@@ -31,58 +30,58 @@ outlined in our package.json, in our case, mongoose.
 let us standardize what our Students look like. Do this
 in a Student.js file.
 
-```javascript
-  // mongoose is what will let us connect to our database
-  var mongoose = require('mongoose');
+    ```javascript
+    // mongoose is what will let us connect to our database
+    var mongoose = require('mongoose');
 
-  // Create a Student model
-  // Specify type of each model variable
-  var Student = mongoose.model('Student', {
-    id: String,
-    name: String,
-    age: Number,
-    gradeLevel: Number,
-  });
+    // Create a Student model
+    // Specify type of each model variable
+    var Student = mongoose.model('Student', {
+      id: String,
+      name: String,
+      age: Number,
+      gradeLevel: Number,
+    });
 
-  // Set Student as our module export.
-  // Now other files can require this file 
-  // and access the Student model and create students.
-  module.exports = Student;
-```
+    // Set Student as our module export.
+    // Now other files can require this file 
+    // and access the Student model and create students.
+    module.exports = Student;
+    ```
 
 6. Now create a server.js file like we have with previous
 applications. This one will have Mongoose and our Student
 Model as requirements.
 
-```javascript
-  // mongoose is what will let us connect to our database
-  var mongoose = require('mongoose');
-  // our Student Object, check out Student.js
-  var Student = require('./Student');
-```
+    ```javascript
+    // mongoose is what will let us connect to our database
+    var mongoose = require('mongoose');
+    // our Student Object, check out Student.js
+    var Student = require('./Student');
+    ```
 
 6.5. Now let's make sure to connect to a database using the Mongoose library. I chose the name school arbitrarily, you can replace that with anything.
 
-```javascript
-  // Use mongoose to connect to our database
-  mongoose.connect('mongodb://localhost/school');
-```
+    ```javascript
+    // Use mongoose to connect to our database
+    mongoose.connect('mongodb://localhost/school');
+    ```
 
 7. Now we can create a student.
 
-```javascript
-  // This is how you create a student
-  // Notice how all the fields in Student.js are provided
-  // If you don't specify a value, it will be null/false/0/''
-  var aaroh = Student.create({
-    id: '149003115',
-    name: 'Aaroh',
-    age: 17,
-    gradeLevel: 12,
-  });
+    ```javascript
+    // This is how you create a student
+    // Notice how all the fields in Student.js are provided
+    // If you don't specify a value, it will be null/false/0/''
+    var aaroh = Student.create({
+      id: '149003115',
+      name: 'Aaroh',
+      age: 17,
+      gradeLevel: 12,
+    });
 
-  console.log(aaroh);
-```
+    console.log(aaroh);
+    ```
 
 8. Now in Git Bash in your project folder, run `node server.js`.
 This will print our `aaroh` object. You will notice it doesn't 
@@ -103,12 +102,12 @@ Javascript. Especially pay attention to promise.prototype.then!
 10. So after having read about promises, the following code should
 seem familiar. This is how you can access data of a promise object.
 
-```javascript
-  // This is how we can access the data of any student
-  aaroh.then(function (aarohData) {
-    console.log(aarohData);
-  });
-```
+    ```javascript
+    // This is how we can access the data of any student
+    aaroh.then(function (aarohData) {
+      console.log(aarohData);
+    });
+    ```
 
 11. Now run `node server.js` in Git Bash in your project folder, 
 and you should see what looks like our aaroh object. Try creating
@@ -119,17 +118,17 @@ file for reference. Press Control + C twice to exit the server.
 pair? Use the find function of a mongoose model, which is built
 into every model.
 
-```javascript
-  // We can also find all student with 'name' of 'Aaroh'
-  // Find another student using some other field
-  Student.findOne({'name': 'Aaroh'}, function(err, student) {
-    if (err) {
-      console.log(err);
-    }
+    ```javascript
+    // We can also find all student with 'name' of 'Aaroh'
+    // Find another student using some other field
+    Student.findOne({'name': 'Aaroh'}, function(err, student) {
+      if (err) {
+        console.log(err);
+      }
 
-    console.log('Student with name `Aaroh`:', student);
-  });
-```
+      console.log('Student with name `Aaroh`:', student);
+    });
+    ```
 
 13. Try changing the name to your students name, or try finding
 your student based on some other criteria. Look up the [Mongoose documentation for the find function](http://mongoosejs.com/docs/queries.html)

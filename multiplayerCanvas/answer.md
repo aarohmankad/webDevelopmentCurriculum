@@ -6,78 +6,77 @@ if you got it right. Well here's how:
 To remove the players, we need to able to get a player based
 on a unique attribute (the id). So in server.js, add this function
 
-```javascript
-  /**
-   * return player based on unique id
-   * @param id {String} unique id for a player object
-   * @return {Player}
-   */
-  function findPlayerById (id) {
-    for (var i = 0; i < players.length; i++) {
-      if (id === players[i].id) {
-        return players[i];
+    ```javascript
+    /**
+     * return player based on unique id
+     * @param id {String} unique id for a player object
+     * @return {Player}
+     */
+    function findPlayerById (id) {
+      for (var i = 0; i < players.length; i++) {
+        if (id === players[i].id) {
+          return players[i];
+        }
       }
-    }
 
-    return null;
-  }
-```
+      return null;
+    }
+    ```
 
 We want to remove a player when the player disconnects, or 
 closes the browser. To do this, add this code to onClientDisconnect
 
-```javascript
-  var removePlayer = findPlayerById(this.id);
+    ```javascript
+    var removePlayer = findPlayerById(this.id);
 
-  if (!removePlayer) {
-    console.log('Player not found:', this.id);
-    return false;
-  }
+    if (!removePlayer) {
+      console.log('Player not found:', this.id);
+      return false;
+    }
 
-  // This is just a fancy way to remove the player 
-  // from the array
-  players.splice(players.indexOf(removePlayer), 1);
- 
-  // Tell all other players that this player left.
-  this.broadcast.emit('remove player', {
-    id: this.id,
-  });
-```
+    // This is just a fancy way to remove the player 
+    // from the array
+    players.splice(players.indexOf(removePlayer), 1);
+
+    // Tell all other players that this player left.
+    this.broadcast.emit('remove player', {
+      id: this.id,
+    });
+    ```
 
 We also want to add the findPlayerById function in our game.js file.
 Note that the code is a little different.
 
-```javascript
-  /**
-   * return player based on unique id
-   * @param id {String} unique id for a player object
-   * @return {Player}
-   */
-  function findPlayerById (id) {
-    for (var i = 0; i < remotePlayers.length; i++) {
-      if (id === remotePlayers[i].id) {
-        return remotePlayers[i];
+    ```javascript
+    /**
+     * return player based on unique id
+     * @param id {String} unique id for a player object
+     * @return {Player}
+     */
+    function findPlayerById (id) {
+      for (var i = 0; i < remotePlayers.length; i++) {
+        if (id === remotePlayers[i].id) {
+          return remotePlayers[i];
+        }
       }
+
+      return null;
+    }
+    ```
+
+Now when our server sends the "remove player" event, we want to remove that player from our game. To do that, add this code to the onRemovePlayer function
+
+    ```javascript
+    var removePlayer = findPlayerById(data.id);
+
+    if (!removePlayer) {
+      console.log('Player not found:', data.id);
+      return false;
     }
 
-    return null;
-  }
-```
-
-Now when our server sends the "remove player" event, we want to remove 
-that player from our game. To do that, add this code to the onRemovePlayer function
-
-```javascript
-  var removePlayer = findPlayerById(data.id);
-
-  if (!removePlayer) {
-    console.log('Player not found:', data.id);
-    return false;
-  }
-
-  // Again, just a fancy way to remove a player
-  remotePlayers.splice(remotePlayers.indexOf(removePlayer), 1);
-```
+    // Again, just a fancy way to remove a player
+    remotePlayers.splice(remotePlayers.indexOf(removePlayer), 1);
+    ```
 
 Restart the server (Ctrl+C to close it if it's already running, then `node server.js`)
 

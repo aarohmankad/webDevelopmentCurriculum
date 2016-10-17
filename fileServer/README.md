@@ -6,9 +6,9 @@
 
 3. To start our basic server, using Git Bash, run the command
 
-```
-  node app.js
-```
+	```
+  	node app.js
+	```
 
 4. This will run the server file, and you can now navigate to localhost:8080 (in your browser) to see your app.
 
